@@ -6,7 +6,7 @@ describe('About page', () => {
   describe('Render method', () => {
     it('should have a paragraph of `Lorem ipsum', () => {
       render(<About />)
-      const paragraph = screen.getAllByText(/Lorem ipsum/)
+      const paragraph = screen.getByText(/Lorem ipsum/)
 
       expect(paragraph).toBeInTheDocument()
     })
