@@ -3,7 +3,7 @@ import type { DocumentContext, DocumentInitialProps } from 'next/document'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import * as React from 'react'
 
-import createEmotionCache from '@/common/utils/createEmotionCache'
+import { createEmotionCache } from '@/common/utils'
 
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME
 
@@ -25,12 +25,13 @@ class MyDocument extends Document {
     const initialProps = await Document.getInitialProps(ctx)
     const emotionStyles = extractCriticalToChunks(initialProps.html)
     const emotionStyleTags = emotionStyles.styles.map((style) => (
-      <style
-        data-emotion={`${style.key} ${style.ids.join(' ')}`}
-        key={style.key}
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: style.css }}
-      />
+      <React.Fragment key={style.key}>
+        <style
+          data-emotion-css={`${style.key} ${style.ids.join(' ')}`}
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: style.css }}
+        />
+      </React.Fragment>
     ))
 
     return {
