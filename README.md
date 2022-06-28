@@ -9,6 +9,7 @@
 - 🦊 [Husky](https://typicode.github.io/husky) to improves your commits
 - 👌 [Lint-staged](https://github.com/okonet/lint-staged) to makes more sense when run before committing your code
 - 💡 [Commitlint](https://commitlint.js.org) lint git commit with Commitlint
+- 🖥️ [Emotion](https://emotion.sh) for writing css styles
 
 ### Getting started
 
