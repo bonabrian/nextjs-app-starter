@@ -1,4 +1,3 @@
-import { extractCritical } from '@emotion/server'
 import type { DocumentContext, DocumentInitialProps } from 'next/document'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import * as React from 'react'
@@ -9,12 +8,9 @@ class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext,
   ): Promise<DocumentInitialProps> {
-    const page = await ctx.renderPage()
-    // extract css to render in SSR
     const initialProps = await Document.getInitialProps(ctx)
-    const styles = extractCritical(initialProps.html)
 
-    return { ...initialProps, ...page, ...styles }
+    return { ...initialProps }
   }
 
   render(): JSX.Element {
